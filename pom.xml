@@ -14,7 +14,7 @@
 	<name>sistemaacademico</name>
 	<description>Projeto para a disciplina de Topicos Avançados II</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
