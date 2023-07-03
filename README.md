@@ -6,20 +6,22 @@ Este projeto pretende implementar uma api básica com testes automatizados e int
   
 
 #### Entidades:
-- Entity
-	-	id : String
-	-	name : String
 - User *(extends Entity)*
+ 	-	id : String
 	- username : string
 	- password : string
+    -	name : String
 - Student *(extends User)*
 	- startYear : integer
 	- course : Course
 - Professor *(extends User)*
-
 - Subject *(extends Entity)*
-	- courseLoad : integer
-	- professor : Professor
-	- course : Course
-	- students : Student[]
+ 	-	id : String
+    -	name : String
+    -   courseLoad : integer
+    -   professor : Professor
+    -   course : Course
+    -   students : Student[]
 - Course *(extends Entity)*
+ 	-	id : String
+ 	-	name : String
