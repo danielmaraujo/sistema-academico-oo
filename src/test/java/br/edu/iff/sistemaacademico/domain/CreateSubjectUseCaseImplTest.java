@@ -16,6 +16,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -45,5 +46,11 @@ public class CreateSubjectUseCaseImplTest {
         // Then
         verify(repository, times(1)).save(any(Subject.class));
         assertEquals(savedSubject.getId(), result);
+    }
+
+    @Test
+    public void testPerform_withNullName() {
+        RequestSubject requestSubject = new RequestSubject(null, 80);
+        assertThrowsExactly(IllegalArgumentException.class, () -> createSubjectUseCase.perform(requestSubject));
     }
 }
