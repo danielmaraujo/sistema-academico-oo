@@ -1,8 +1,7 @@
 # Sistema Acadêmico
 ### Projeto para a disciplina Tópicos Avançados II
 
-Este projeto pretende implementar uma api básica com testes automatizados e integração contínua.
-
+Este projeto pretende implementar uma api básica seguindo os conceitos de Clean Architecture, TDD e integração contínua
   
 
 #### Entidades:
