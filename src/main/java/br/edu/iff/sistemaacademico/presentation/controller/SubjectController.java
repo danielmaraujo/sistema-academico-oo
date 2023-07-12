@@ -1,4 +1,4 @@
-package br.edu.iff.sistemaacademico.controllers;
+package br.edu.iff.sistemaacademico.presentation.controller;
 
 import br.edu.iff.sistemaacademico.domain.dto.RequestSubject;
 import br.edu.iff.sistemaacademico.domain.usecase.CreateSubjectUseCase;

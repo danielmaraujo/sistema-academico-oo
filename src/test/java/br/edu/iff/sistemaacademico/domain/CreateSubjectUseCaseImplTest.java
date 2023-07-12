@@ -3,7 +3,7 @@ package br.edu.iff.sistemaacademico.domain;
 import br.edu.iff.sistemaacademico.domain.dto.RequestSubject;
 import br.edu.iff.sistemaacademico.domain.entity.Subject;
 import br.edu.iff.sistemaacademico.domain.usecase.CreateSubjectUseCase;
-import br.edu.iff.sistemaacademico.domain.usecase.CreateSubjectUseCaseImpl;
+import br.edu.iff.sistemaacademico.domain.usecase.implementation.CreateSubjectUseCaseImpl;
 import br.edu.iff.sistemaacademico.repository.SubjectRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,15 +36,15 @@ public class CreateSubjectUseCaseImplTest {
         // Given
         RequestSubject requestSubject = new RequestSubject("Topicos II", 80);
         Subject savedSubject = new Subject(requestSubject);
-        savedSubject.setId(UUID.randomUUID());
+        savedSubject.setId(UUID.randomUUID().toString());
 
-        when(repository.save(any(Subject.class))).thenReturn(savedSubject);
+        when(repository.insert(any(Subject.class))).thenReturn(savedSubject);
 
         // When
-        UUID result = createSubjectUseCase.perform(requestSubject);
+        String result = createSubjectUseCase.perform(requestSubject);
 
         // Then
-        verify(repository, times(1)).save(any(Subject.class));
+        verify(repository, times(1)).insert(any(Subject.class));
         assertEquals(savedSubject.getId(), result);
     }
 

@@ -1,14 +1,14 @@
-package br.edu.iff.sistemaacademico.domain.usecase;
+package br.edu.iff.sistemaacademico.domain.usecase.implementation;
 
 import br.edu.iff.sistemaacademico.domain.dto.RequestSubject;
 import br.edu.iff.sistemaacademico.domain.entity.Subject;
+import br.edu.iff.sistemaacademico.domain.usecase.CreateSubjectUseCase;
 import br.edu.iff.sistemaacademico.repository.SubjectRepository;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
-import java.util.UUID;
 
 @Service
 public class CreateSubjectUseCaseImpl implements CreateSubjectUseCase {
@@ -21,7 +21,7 @@ public class CreateSubjectUseCaseImpl implements CreateSubjectUseCase {
     }
 
     @Override
-    public UUID perform(RequestSubject dto) {
+    public String perform(RequestSubject dto) {
         Subject newSubject = new Subject(dto);
 
         Set<ConstraintViolation<Subject>> violations = validator.validate(newSubject);
@@ -30,6 +30,6 @@ public class CreateSubjectUseCaseImpl implements CreateSubjectUseCase {
             throw new IllegalArgumentException("Invalid subject");
         }
 
-        return repository.save(newSubject).getId();
+        return repository.insert(newSubject).getId();
     }
 }
