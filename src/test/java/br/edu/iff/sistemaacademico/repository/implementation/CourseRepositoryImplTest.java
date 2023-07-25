@@ -1,7 +1,6 @@
 package br.edu.iff.sistemaacademico.repository.implementation;
 
 import br.edu.iff.sistemaacademico.domain.entity.Course;
-import br.edu.iff.sistemaacademico.domain.entity.Subject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

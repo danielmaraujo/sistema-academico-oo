@@ -2,7 +2,6 @@ package br.edu.iff.sistemaacademico.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -25,6 +24,5 @@ public class Student extends br.edu.iff.sistemaacademico.domain.entity.Entity {
 
     @NotNull
     @Column(name = "course")
-    @ManyToOne
-    private Course course;
+    private String course;
 }

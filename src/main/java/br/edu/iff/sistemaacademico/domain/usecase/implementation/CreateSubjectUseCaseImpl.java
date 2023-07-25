@@ -9,6 +9,7 @@ import jakarta.validation.Validator;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.util.UUID;
 
 @Service
 public class CreateSubjectUseCaseImpl implements CreateSubjectUseCase {
@@ -21,13 +22,14 @@ public class CreateSubjectUseCaseImpl implements CreateSubjectUseCase {
     }
 
     @Override
-    public String perform(RequestSubject dto) {
+    public String perform(RequestSubject dto){
         Subject newSubject = new Subject(dto);
+        newSubject.setId(UUID.randomUUID().toString());
 
         Set<ConstraintViolation<Subject>> violations = validator.validate(newSubject);
 
         if (!violations.isEmpty()) {
-            throw new IllegalArgumentException("Invalid subject");
+            throw new IllegalArgumentException("Dados incompletos");
         }
 
         return repository.insert(newSubject).getId();

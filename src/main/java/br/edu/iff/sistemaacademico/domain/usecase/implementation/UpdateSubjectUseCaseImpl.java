@@ -28,7 +28,7 @@ public class UpdateSubjectUseCaseImpl implements UpdateSubjectUseCase {
         Set<ConstraintViolation<Subject>> violations = validator.validate(subject);
 
         if (!violations.isEmpty()) {
-            throw new IllegalArgumentException("Invalid subject");
+            throw new IllegalArgumentException("Dados incompletos");
         }
 
         return repository.update(id, subject).getId();
