@@ -1,9 +1,8 @@
-package br.edu.iff.sistemaacademico.domain;
+package br.edu.iff.sistemaacademico.domain.usecase.implementation;
 
 import br.edu.iff.sistemaacademico.domain.dto.RequestSubject;
 import br.edu.iff.sistemaacademico.domain.entity.Subject;
 import br.edu.iff.sistemaacademico.domain.usecase.CreateSubjectUseCase;
-import br.edu.iff.sistemaacademico.domain.usecase.implementation.CreateSubjectUseCaseImpl;
 import br.edu.iff.sistemaacademico.repository.SubjectRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,7 @@ public class CreateSubjectUseCaseImplTest {
     @Test
     public void testPerform() {
         // Given
-        RequestSubject requestSubject = new RequestSubject("Topicos II", 80);
+        RequestSubject requestSubject = new RequestSubject("Updated Subject", 80, "123", "321");
         Subject savedSubject = new Subject(requestSubject);
         savedSubject.setId(UUID.randomUUID().toString());
 
@@ -49,8 +48,8 @@ public class CreateSubjectUseCaseImplTest {
     }
 
     @Test
-    public void testPerform_withNullName() {
-        RequestSubject requestSubject = new RequestSubject(null, 80);
+    public void testPerform_missingFields() {
+        RequestSubject requestSubject = new RequestSubject(null, null, null, null);
         assertThrowsExactly(IllegalArgumentException.class, () -> createSubjectUseCase.perform(requestSubject));
     }
 }

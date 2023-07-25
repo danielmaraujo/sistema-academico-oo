@@ -1,6 +1,5 @@
 package br.edu.iff.sistemaacademico.repository.implementation;
 
-import br.edu.iff.sistemaacademico.domain.entity.Course;
 import br.edu.iff.sistemaacademico.domain.entity.Professor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,7 +26,7 @@ public class ProfessorRepositoryImplTest {
     public void testFindByIdExistingProfessor() {
         // Arrange
         Professor professor = new Professor();
-        professor.setId("1");
+        professor.setUsername("1");
         professor.setName("Fernando");
 
         // Act
@@ -48,10 +47,10 @@ public class ProfessorRepositoryImplTest {
     public void testFindAll() {
         // Arrange
         Professor professor1 = new Professor();
-        professor1.setId("1");
+        professor1.setUsername("1");
         professor1.setName("Fernando");
         Professor professor2 = new Professor();
-        professor2.setId("2");
+        professor2.setUsername("2");
         professor2.setName("Fabio");
 
         // Act
@@ -69,7 +68,7 @@ public class ProfessorRepositoryImplTest {
     public void testInsert() {
         // Arrange
         Professor professor = new Professor();
-        professor.setId("1");
+        professor.setUsername("1");
         professor.setName("Fernando");
 
         // Act
@@ -84,7 +83,7 @@ public class ProfessorRepositoryImplTest {
     public void testInsertExistingProfessor() {
         // Arrange
         Professor professor = new Professor();
-        professor.setId("1");
+        professor.setUsername("1");
         professor.setName("Fernando");
         professorRepository.insert(professor);
 
@@ -98,13 +97,13 @@ public class ProfessorRepositoryImplTest {
     public void testUpdateExistingProfessor() {
         // Arrange
         Professor professor = new Professor();
-        professor.setId("1");
+        professor.setUsername("1");
         professor.setName("Fernando");
         professorRepository.insert(professor);
 
         // Act
         Professor updatedProfessor = new Professor();
-        updatedProfessor.setId("1");
+        updatedProfessor.setUsername("1");
         updatedProfessor.setName("Fabio");
         Professor result = professorRepository.update("1", updatedProfessor);
 
@@ -117,7 +116,7 @@ public class ProfessorRepositoryImplTest {
     public void testUpdateNonExistingProfessor() {
         // Arrange
         Professor professor = new Professor();
-        professor.setId("1");
+        professor.setUsername("1");
         professor.setName("Fernando");
 
         // Act & Assert
@@ -130,7 +129,7 @@ public class ProfessorRepositoryImplTest {
     public void testDeleteExistingProfessor() {
         // Arrange
         Professor professor = new Professor();
-        professor.setId("1");
+        professor.setUsername("1");
         professor.setName("Fernando");
         professorRepository.insert(professor);
 

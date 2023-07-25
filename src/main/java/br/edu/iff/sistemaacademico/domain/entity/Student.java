@@ -14,7 +14,11 @@ import lombok.NoArgsConstructor;
 @Entity(name = "student")
 @Data
 @NoArgsConstructor
-public class Student extends User{
+public class Student extends br.edu.iff.sistemaacademico.domain.entity.Entity {
+    @NotNull
+    @Column(name = "name")
+    private String name;
+
     @NotNull
     @Column(name = "startYear")
     private Integer startYear;

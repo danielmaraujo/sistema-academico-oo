@@ -13,8 +13,8 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
     private final Map<String, Professor> db = new HashMap<>();
 
     @Override
-    public Professor findById(String id) {
-        return db.get(id);
+    public Professor findById(String username) {
+        return db.get(username);
     }
 
     @Override
@@ -24,13 +24,13 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
 
     @Override
     public Professor insert(Professor data) throws IllegalArgumentException {
-        if (db.containsKey(data.getId())){
+        if (db.containsKey(data.getUsername())){
             throw new IllegalArgumentException("Dado já existe");
         }
 
-        db.put(data.getId(), data);
+        db.put(data.getUsername(), data);
 
-        return db.get(data.getId());
+        return db.get(data.getUsername());
     }
 
     @Override
@@ -39,9 +39,9 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
             throw new IllegalArgumentException("Dado não encontrado");
         }
 
-        db.replace(data.getId(), data);
+        db.replace(data.getUsername(), data);
 
-        return db.get(data.getId());
+        return db.get(data.getUsername());
     }
 
     @Override
