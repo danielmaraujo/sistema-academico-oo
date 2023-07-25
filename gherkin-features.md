@@ -1,51 +1,51 @@
 ## Feature: Inclusão de disciplina
-    Como estudante
-    Quero incluir uma disciplina 
-    Para cursá-la.
+    Como professor
+    Quero incluir estudante em uma disciplina 
+    Para que ele possa cursá-la.
   
 ### Scenario: Inclusão válida
     Dado que a disciplina existe
     E corresponde ao curso do estudante
-    Quando ele solicita a inclusão
+    Quando é solicitada a inclusão
     Então ele é adicionado na lista de alunos
 
 ### Scenario: Disciplina de outro curso
     Dado que a disciplina existe
     E não corresponde ao curso do estudante
-    Quando ele solicita a inclusão
-    Então ele é informado que não pode se inscrever naquela disciplina
+    Quando é solicitada a inclusão
+    Então é informado que não pode se inscrever naquela disciplina
 
 ### Scenario: Disciplina não existe
     Dado que a disciplina não existe
-    Quando ele solicita a inclusão
-    Então ele é informado que aquela disciplina não existe
+    Quando é solicitada a inclusão
+    Então é informado que aquela disciplina não existe
 
 ## Feature: Exclusão de disciplina
-    Como estudante
-    Quero excluir uma disciplina 
-    Para deixar de cursá-la.
+    Como professor
+    Quero excluir estudante em uma disciplina 
+    Para que ele deixe de cursá-la.
   
 ### Scenario: Exclusão válida
     Dado que a disciplina existe
     E o estudante está inscrito na disciplina
-    Quando ele solicita a exclusão
+    Quando é solicitada a exclusão
     Então ele é removido da lista de alunos
 
 ### Scenario: Estudante não está inscrito
     Dado que a disciplina existe
     E o estudante não está inscrito na disciplina
-    Quando ele solicita a inclusão
-    Então ele é informado que não está inscrito
+    Quando é solicitada a inclusão
+    Então é informado que o estudante não está inscrito
 
 ### Scenario: Disciplina não existe
     Dado que a disciplina não existe
-    Quando ele solicita a exclusão
-    Então ele é informado que aquela disciplina não existe
+    Quando é solicitada a exclusão
+    Então é informado que aquela disciplina não existe
 
 ## Feature: Criação de disciplina
     Como professor
     Quero criar uma disciplina 
-    Para disponibilizar para estudantes.
+    Para inscrever estudantes.
   
 ### Scenario: Criação válida
     Dado que o professor preenche todos os campos necessários

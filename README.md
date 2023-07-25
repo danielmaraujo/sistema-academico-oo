@@ -7,14 +7,14 @@ Este projeto pretende implementar uma api básica seguindo os conceitos de Clean
 #### Entidades:
 - Entity
   -	id : String
-- User *(extends Entity)*
+- Professor
 	- username : string
 	- password : string
     -	name : String
-- Student *(extends User)*
+- Student *(extends Entity)*
+    - name: String
 	- startYear : integer
 	- course : Course
-- Professor *(extends User)*
 - Subject *(extends Entity)*
     -	name : String
     -   courseLoad : integer

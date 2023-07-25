@@ -1,14 +1,23 @@
 # Casos de uso
 
-### Estudante inclui disciplina
-O Estudante deve poder incluir disciplina.
-Restrições:
- - Apenas se for uma disciplina de seu curso
+### Professor consulta alunos
+O professor deve poder consultar alunos
 
-### Estudante exclui disciplina
-O estudante deve poder excluir disciplina.
+### Professor consulta disciplinas
+O professor deve poder consultar disciplinas
+
+### Professor consulta cursos
+O professor deve poder consultar cursos
+
+### Professor inclui estudante em disciplina
+O Professor deve poder incluir estudante em disciplina.
 Restrições:
- - Apenas se estiver inscrito
+ - Apenas se for uma disciplina do curso do estudante
+
+### Professor exclui estudante em disciplina
+O Professor deve poder excluir estudante da disciplina.
+Restrições:
+ - Apenas se estudante estiver inscrito
 
 ### Professor abre disciplina
 O professor deve conseguir abrir disciplinas
