@@ -3,6 +3,8 @@ package br.edu.iff.sistemaacademico.presentation.controller;
 import br.edu.iff.sistemaacademico.domain.entity.Course;
 import br.edu.iff.sistemaacademico.domain.usecase.GetCourseUseCase;
 import br.edu.iff.sistemaacademico.domain.usecase.GetCoursesUseCase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,8 @@ public class CourseController {
     final GetCourseUseCase getCourseUseCase;
     final GetCoursesUseCase getCoursesUseCase;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CourseController.class);
+
     public CourseController(GetCourseUseCase getCourseUseCase, GetCoursesUseCase getCoursesUseCase) {
         this.getCourseUseCase = getCourseUseCase;
         this.getCoursesUseCase = getCoursesUseCase;
@@ -24,6 +28,8 @@ public class CourseController {
 
     @GetMapping(value = "/courses")
     public ResponseEntity getAllCourses(){
+        LOGGER.info("GET /courses");
+
         Collection<Course> subjects = getCoursesUseCase.perform();
 
         return new ResponseEntity<>(subjects, HttpStatus.OK);
@@ -31,6 +37,8 @@ public class CourseController {
 
     @GetMapping(value = "/courses/{id}")
     public ResponseEntity getCourse(@PathVariable("id") String courseId){
+        LOGGER.info("GET /courses/{}", courseId);
+
         Course course = getCourseUseCase.perform(courseId);
 
         if (course == null) {

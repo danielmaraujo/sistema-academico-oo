@@ -10,6 +10,8 @@ import br.edu.iff.sistemaacademico.domain.usecase.GetSubjectsUseCase;
 import br.edu.iff.sistemaacademico.domain.usecase.RemoveSubjectStudentUseCase;
 import br.edu.iff.sistemaacademico.domain.usecase.UpdateSubjectUseCase;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,6 +36,8 @@ public class SubjectController {
     final AddSubjectStudentUseCase addSubjectStudentUseCase;
     final RemoveSubjectStudentUseCase removeSubjectStudentUseCase;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(StudentController.class);
+
     public SubjectController(GetSubjectUseCase getSubjectUseCase, GetSubjectsUseCase getSubjectsUseCase, CreateSubjectUseCase createSubjectUseCase, DeleteSubjectUseCase deleteSubjectUseCase, UpdateSubjectUseCase updateSubjectUseCase, AddSubjectStudentUseCase addSubjectStudentUseCase, RemoveSubjectStudentUseCase removeSubjectStudentUseCase) {
         this.getSubjectUseCase = getSubjectUseCase;
         this.getSubjectsUseCase = getSubjectsUseCase;
@@ -46,6 +50,8 @@ public class SubjectController {
 
     @GetMapping(value = "/subjects")
     public ResponseEntity getAllSubjects(){
+        LOGGER.info("GET /subjects");
+
         Collection<Subject> subjects = getSubjectsUseCase.perform();
 
         return new ResponseEntity<>(subjects, HttpStatus.OK);
@@ -53,6 +59,8 @@ public class SubjectController {
 
     @GetMapping(value = "/subjects/{id}")
     public ResponseEntity getSubject(@PathVariable("id") String subjectId){
+        LOGGER.info("GET /subjects/{}", subjectId);
+
         Subject subject = getSubjectUseCase.perform(subjectId);
 
         if (subject == null) {
@@ -64,6 +72,8 @@ public class SubjectController {
 
     @PostMapping(value = "/subjects")
     public ResponseEntity postSubject(@RequestBody @Valid RequestSubject data){
+        LOGGER.info("POST /subjects");
+
         try{
             createSubjectUseCase.perform(data);
         }catch (IllegalArgumentException e){
@@ -75,6 +85,8 @@ public class SubjectController {
 
     @PutMapping(value = "/subjects/{id}")
     public ResponseEntity putSubject(@PathVariable("id") String subjectId, @RequestBody @Valid RequestSubject data){
+        LOGGER.info("PUT /subjects/{}", subjectId);
+
         try{
             updateSubjectUseCase.perform(subjectId, data);
         }catch (IllegalArgumentException e){
@@ -86,6 +98,8 @@ public class SubjectController {
 
     @DeleteMapping(value = "/subjects/{id}")
     public ResponseEntity deleteSubject(@PathVariable("id") String subjectId, @RequestHeader("professorId") String professorId){
+        LOGGER.info("DELETE /subjects/{}", subjectId);
+
         try{
             deleteSubjectUseCase.perform(subjectId, professorId);
         }catch (IllegalArgumentException e){
@@ -97,6 +111,8 @@ public class SubjectController {
 
     @PutMapping(value = "/subjects/{subjectId}/student/{studentId}")
     public ResponseEntity addStudent(@PathVariable("studentId") String studentId, @PathVariable("subjectId") String subjectId){
+        LOGGER.info("PUT /subjects/{}/student/{}", subjectId, studentId);
+
         try{
             addSubjectStudentUseCase.perform(studentId, subjectId);
         }catch (IllegalArgumentException e){
@@ -108,6 +124,8 @@ public class SubjectController {
 
     @DeleteMapping(value = "/subjects/{subjectId}/student/{studentId}")
     public ResponseEntity removeStudent (@PathVariable("studentId") String studentId, @PathVariable("subjectId") String subjectId){
+        LOGGER.info("DELETE /subjects/{}/student/{}", subjectId, studentId);
+
         try{
             removeSubjectStudentUseCase.perform(studentId, subjectId);
         }catch (IllegalArgumentException e){
