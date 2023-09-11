@@ -1,8 +1,10 @@
 package br.edu.iff.sistemaacademico;
 
 import br.edu.iff.sistemaacademico.domain.entity.Course;
+import br.edu.iff.sistemaacademico.domain.entity.Professor;
 import br.edu.iff.sistemaacademico.domain.entity.Student;
 import br.edu.iff.sistemaacademico.repository.CourseRepository;
+import br.edu.iff.sistemaacademico.repository.ProfessorRepository;
 import br.edu.iff.sistemaacademico.repository.StudentRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
@@ -11,10 +13,12 @@ import org.springframework.stereotype.Component;
 public class DataInitializer {
     final StudentRepository studentRepository;
     final CourseRepository courseRepository;
+    final ProfessorRepository professorRepository;
 
-    public DataInitializer(StudentRepository studentRepository, CourseRepository courseRepository) {
+    public DataInitializer(StudentRepository studentRepository, CourseRepository courseRepository, ProfessorRepository professorRepository) {
         this.studentRepository = studentRepository;
         this.courseRepository = courseRepository;
+        this.professorRepository = professorRepository;
     }
 
     @PostConstruct
@@ -44,5 +48,12 @@ public class DataInitializer {
 
         studentRepository.insert(s1);
         studentRepository.insert(s2);
+
+        Professor p1 = new Professor();
+        p1.setUsername("fernando");
+        p1.setPassword("123");
+        p1.setName("Fernando");
+
+        professorRepository.insert(p1);
     }
 }
