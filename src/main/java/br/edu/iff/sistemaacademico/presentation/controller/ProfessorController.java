@@ -23,9 +23,9 @@ public class ProfessorController {
     }
 
 
-    @GetMapping(value = "/professor")
+    @GetMapping(value = "/professors")
     public ResponseEntity getAllProfessors() {
-        LOGGER.info("GET /professor");
+        LOGGER.info("GET /professors");
 
         Collection<Professor> subjects = getProfessorsUseCase.perform();
 
